@@ -12,15 +12,15 @@ namespace smi {
      */
     remove(idx: number): boolean;
   }
-  interface I_find {
+  interface I_indexOf {
     /*
      * Returns the index of an element, or `null` if it is not in the list
      */
-    find(elem: string): number | null;
+    indexOf(elem: string): number | null;
   }
 
-  function contains(list: I_find, elem: string): boolean {
-    return list.find(elem) !== null;
+  function contains(list: I_indexOf, elem: string): boolean {
+    return list.indexOf(elem) !== null;
   }
 
   function setElement(
@@ -34,11 +34,11 @@ namespace smi {
   }
 
   function replaceElement(
-    list: I_find & I_add & I_remove,
+    list: I_indexOf & I_add & I_remove,
     oldElem: string,
     newElem: string
   ): boolean {
-    const idx = list.find(oldElem);
+    const idx = list.indexOf(oldElem);
     if (idx === null) return false;
     return setElement(list, idx, newElem);
   }
@@ -50,7 +50,7 @@ namespace smi {
   // ------- Example 1 ---------
   const list1Values = ["hi", "there", "friend"];
   const list1 = {
-    find(elem: string): number | null {
+    indexOf(elem: string): number | null {
       const idx = list1Values.indexOf(elem);
       if (idx === -1) return null;
       return idx;

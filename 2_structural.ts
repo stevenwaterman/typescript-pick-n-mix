@@ -3,7 +3,7 @@ namespace structural {
     /**
      * Returns the index of an element, or `null` if it is not in the list
      */
-    find(elem: string): number | null;
+    indexOf(elem: string): number | null;
   }
 
   interface Mutable {
@@ -33,11 +33,11 @@ namespace structural {
     /**
      * Returns the index of an element, or `null` if it is not in the list
      */
-    find(elem: string): number | null;
+    indexOf(elem: string): number | null;
   }
 
   function contains(list: Searchable, elem: string): boolean {
-    return list.find(elem) !== null;
+    return list.indexOf(elem) !== null;
   }
 
   function setElement(list: Mutable, idx: number, newElem: string): boolean {
@@ -51,7 +51,7 @@ namespace structural {
     oldElem: string,
     newElem: string
   ): boolean {
-    const idx = list.find(oldElem);
+    const idx = list.indexOf(oldElem);
     if (idx === null) return false;
     return setElement(list, idx, newElem);
   }
@@ -63,9 +63,9 @@ namespace structural {
   // ------- Example 1 ---------
   const list1Values = ["hi", "there", "friend"];
   const list1 = {
-    find(elem: string): number | null {
-      const idx = list1Values.indexOf(elem)
-      if(idx === -1) return null;
+    indexOf(elem: string): number | null {
+      const idx = list1Values.indexOf(elem);
+      if (idx === -1) return null;
       return idx;
     }
   };
@@ -89,7 +89,7 @@ namespace structural {
       const deleted = list2Values.splice(idx, 1);
       return deleted.length > 0;
     },
-    find(elem: string): number | null {
+    indexOf(elem: string): number | null {
       const idx = list2Values.indexOf(elem);
       if (idx === -1) return null;
       return idx;

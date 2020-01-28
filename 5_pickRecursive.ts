@@ -14,11 +14,11 @@ namespace pickRecursive {
     /**
      * Returns the index of an element, or `null` if it is not in the list
      */
-    find(elem: string): number | null;
+    indexOf(elem: string): number | null;
   }
 
-  function contains(list: Pick<StringList, "find">, elem: string): boolean {
-    return list.find(elem) !== null;
+  function contains(list: Pick<StringList, "indexOf">, elem: string): boolean {
+    return list.indexOf(elem) !== null;
   }
 
   function setElement(
@@ -38,11 +38,11 @@ namespace pickRecursive {
 
   function replaceElement(
     // It's easier to use the utility type `Parameter` defined above
-    list: Pick<StringList, "find"> & Parameter<typeof setElement, 0>,
+    list: Pick<StringList, "indexOf"> & Parameter<typeof setElement, 0>,
     oldElem: string,
     newElem: string
   ): boolean {
-    const idx = list.find(oldElem);
+    const idx = list.indexOf(oldElem);
     if (idx === null) return false;
     return setElement(list, idx, newElem);
   }
